@@ -1,8 +1,17 @@
 import { MdDashboard } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AiFillCustomerService } from "react-icons/ai";
+import { CiShoppingCart } from "react-icons/ci";
 
 export default function Sidebar() {
+        const menuClass = ({ isActive }) =>
+        `flex cursor-pointer items-center rounded-xl p-4  space-x-2
+
+        ${isActive ? 
+            "text-hijau bg-green-200 font-extrabold" : 
+            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+        }`
     return (
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
             {/* Logo */}
@@ -16,16 +25,25 @@ export default function Sidebar() {
             {/* List Menu */}
             <div id="sidebar-menu" className="mt-10">
                 <ul id="menu-list" className="space-y-3">
-                    <Link id="menu-1" className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                    <NavLink 
+                    id="menu-1" 
+                    to="/" 
+                    className={menuClass}>
                         <MdDashboard className="mr-4 text-xl" />
-                        <span>Dashboard</span>
-                    </Link>
-                    <Link id="menu-2" className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
-                        <span>Orders</span>
-                    </Link>
-                    <Link id="menu-3" className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
-                        <span>Customers</span>
-                    </Link>
+                        <span> Dashboard</span>
+                    </NavLink>
+                    <NavLink 
+                    id="menu-2" 
+                    to="/orders" 
+                    className={menuClass}>
+                        <CiShoppingCart />
+                        <span> Orders</span>
+                    </NavLink>
+                    <NavLink id="menu-3" to="/customers" 
+                    className={menuClass}>
+                        <AiFillCustomerService />
+                        <span> Customers</span>
+                    </NavLink>
                 </ul>
             </div>
 

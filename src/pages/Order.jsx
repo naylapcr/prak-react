@@ -8,7 +8,7 @@ import RecentOrders from "../components/RecentOrders";
 export default function Order() {
     return (
         <div id="dashboard-container">
-            <PageHeader />
+            <PageHeader title="Orders" />
             <p>Ini adalah halaman Order</p>
         </div>
     );

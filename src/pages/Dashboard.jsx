@@ -28,7 +28,7 @@ export default function Dashboard() {
     return (
         <div id="dashboard-container" className="flex flex-col space-y-6 pb-10">
             {/* 1. Header Halaman */}
-            <PageHeader />
+            <PageHeader title="Dashboard" />
 
             {/* 2. Stats Cards dengan Hover Effect (Melayang & Ikon Miring) */}
             <div id="dashboard-grid" className="p-5 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
