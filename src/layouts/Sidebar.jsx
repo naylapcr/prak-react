@@ -9,8 +9,8 @@ export default function Sidebar() {
         `flex cursor-pointer items-center rounded-xl p-4  space-x-2
 
         ${isActive ? 
-            "text-hijau bg-green-200 font-extrabold" : 
-            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+            "text-hijau bg-blue-200 font-extrabold" : 
+            "text-gray-600 hover:text-hijau hover:bg-blue-200 hover:font-extrabold"
         }`
     return (
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
