@@ -15,19 +15,53 @@ function App() {
 
   return (
     <div id="app-container" className="bg-gray-100 min-h-screen flex">
-                <div id="layout-wrapper" className="flex flex-row flex-1">
-                <Sidebar/>
-                <div id="main-content" className="flex-1 p-4">
-                 <Header/>
-                 <Routes>
-                      <Route path="/" element={<Dashboard />} />
-                      <Route path="/orders" element={<Order />} />
-                      <Route path="/customers" element={<Customer />} />
-                      <Route path="*" element={<NotFound />} />
-                </Routes>
-                  </div>
-                </div>
-            </div>
+      <div id="layout-wrapper" className="flex flex-row flex-1">
+        <Sidebar />
+        <div id="main-content" className="flex-1 p-4">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/orders" element={<Order />} />
+            <Route path="/customers" element={<Customer />} />
+
+            {/* Route khusus Error Pages sesuai perintah */}
+            <Route 
+              path="/error/400" 
+              element={
+                <ErrorPage 
+                  errorCode="400" 
+                  errorDescription="Bad Request: Permintaan tidak dapat diproses." 
+                  errorImage={errorImg} 
+                />
+              } 
+            />
+            <Route 
+              path="/error/401" 
+              element={
+                <ErrorPage 
+                  errorCode="401" 
+                  errorDescription="Unauthorized: Anda tidak memiliki akses ke halaman ini." 
+                  errorImage={errorImg} 
+                />
+              } 
+            />
+            <Route 
+              path="/error/403" 
+              element={
+                <ErrorPage 
+                  errorCode="403" 
+                  errorDescription="Forbidden: Akses ditolak secara permanen." 
+                  errorImage={errorImg} 
+                />
+              } 
+            />
+
+            {/* Fallback Route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </div>
+    </div>
   );
 }
 
