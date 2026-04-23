@@ -44,6 +44,33 @@ export default function Sidebar() {
                         <AiFillCustomerService />
                         <span> Customers</span>
                     </NavLink>
+                    {/* --- Tambahkan kode ini di bawah menu Orders --- */}
+<div className="mt-8 border-t pt-4">
+  <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
+    Error Pages
+  </p>
+  
+  <ul className="space-y-2">
+    <li>
+      <Link to="/error/400" className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md transition">
+        <span className="mr-3 text-lg">⚠️</span>
+        <span>Error 400</span>
+      </Link>
+    </li>
+    <li>
+      <Link to="/error/401" className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md transition">
+        <span className="mr-3 text-lg">👤</span>
+        <span>Error 401</span>
+      </Link>
+    </li>
+    <li>
+      <Link to="/error/403" className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md transition">
+        <span className="mr-3 text-lg">🔒</span>
+        <span>Error 403</span>
+      </Link>
+    </li>
+  </ul>
+</div>
                 </ul>
             </div>
 

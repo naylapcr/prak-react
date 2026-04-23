@@ -9,9 +9,13 @@ import { Route, Routes } from 'react-router-dom';
 import Customer from './pages/Customer';
 import Order from './pages/Order';
 import NotFound from './pages/NotFound';
+import ErrorPage from './pages/ErrorPage'; // Sesuaikan path ini dengan folder tempat kamu menyimpan ErrorPage.jsx
+
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const errorImg = "https://illustrations.popsy.co/gray/error-404.svg";
 
   return (
     <div id="app-container" className="bg-gray-100 min-h-screen flex">
@@ -28,7 +32,7 @@ function App() {
             <Route 
               path="/error/400" 
               element={
-                <ErrorPage 
+                <ErrorPage  
                   errorCode="400" 
                   errorDescription="Bad Request: Permintaan tidak dapat diproses." 
                   errorImage={errorImg} 
