@@ -11,7 +11,7 @@ export default function NotFound() {
         alignItems: 'center',
         justifyContent: 'center',
         height: '80vh',
-        backgroundColor: '#f8f9fa', // Background abu-abu muda sesuai dashboard
+        backgroundColor: '#f8f9fa', 
         borderRadius: '20px',
         margin: '20px',
         textAlign: 'center',
@@ -19,8 +19,8 @@ export default function NotFound() {
     };
 
     const iconCircleStyle = {
-        backgroundColor: '#e6f4f1', // Warna hijau pucat dari palet Sedap
-        color: '#00B074', // Hijau utama dashboard
+        backgroundColor: '#e6f4f1', 
+        color: '#00B074', 
         padding: '30px',
         borderRadius: '50%',
         marginBottom: '20px',

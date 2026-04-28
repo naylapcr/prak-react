@@ -2,7 +2,8 @@ import React from "react";
 import PageHeader from "../components/PageHeader";
 import { ordersData } from "../data/mockData";
 
-const Order = () => {
+
+export default function Order () {
   return (
     <div className="bg-white rounded-lg shadow-sm p-6">
       <PageHeader title="Orders" breadcrumb={["Dashboard", "Order data"]}>

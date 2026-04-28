@@ -1,32 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState, lazy, Suspense } from 'react' // Tambahkan lazy & Suspense
 import "./assets/tailwind.css"
-import Sidebar from "./layouts/Sidebar";
-import Header from "./layouts/Header";
-import Dashboard from "./pages/Dashboard";
-import { Route, Routes } from 'react-router-dom';
-import Customer from './pages/Customer';
-import Order from './pages/Order';
-import NotFound from './pages/NotFound';
-import ErrorPage from './pages/ErrorPage'; // Sesuaikan path ini dengan folder tempat kamu menyimpan ErrorPage.jsx
+import { Route, Routes } from 'react-router-dom'
+import Loading from './components/Loading'
+
+// Ganti import statis menjadi lazy loading
+const Dashboard = React.lazy(() => import('./pages/Dashboard'))
+const Order = React.lazy(() => import('./pages/Order'))
+const Customer = React.lazy(() => import('./pages/Customer'))
+const NotFound = React.lazy(() => import('./pages/NotFound'))
+const Login = React.lazy(() => import('./pages/auth/Login'))
+const Register = React.lazy(() => import('./pages/auth/Register'))
+const Forgot = React.lazy(() => import('./pages/auth/Forgot'))
+const ErrorPage = React.lazy(() => import('./pages/ErrorPage'))
+
+// MainLayout & AuthLayout biasanya dibiarkan statis karena sering langsung dipakai
+const MainLayouts = React.lazy(() => import('./layouts/MainLayouts'))
+const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'))
 
 
 function App() {
   const [count, setCount] = useState(0)
 
-  const errorImg = "https://illustrations.popsy.co/gray/error-404.svg";
-
+  const errorImg = "https://img.freepik.com/premium-vector/403-error-forbidden-with-police-concept-illustration_114360-1904.jpg";
+  const errorImg1 = "https://static.vecteezy.com/system/resources/previews/069/722/287/non_2x/error-401-unauthorized-access-attempt-glyph-multi-circle-vector.jpg"
   return (
-    <div id="app-container" className="bg-gray-100 min-h-screen flex">
-      <div id="layout-wrapper" className="flex flex-row flex-1">
-        <Sidebar />
-        <div id="main-content" className="flex-1 p-4">
-          <Header />
+    <Suspense fallback={<Loading />}>
           <Routes>
+            <Route element={<MainLayouts />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/orders" element={<Order />} />
-            <Route path="/customers" element={<Customer />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/customer" element={<Customer />} />
 
             {/* Route khusus Error Pages sesuai perintah */}
             <Route 
@@ -45,7 +48,7 @@ function App() {
                 <ErrorPage 
                   errorCode="401" 
                   errorDescription="Unauthorized: Anda tidak memiliki akses ke halaman ini." 
-                  errorImage={errorImg} 
+                  errorImage={errorImg1} 
                 />
               } 
             />
@@ -59,13 +62,20 @@ function App() {
                 />
               } 
             />
-
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
+            </Route>
+
+            <Route element={<AuthLayout/>}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/forgot" element={<Forgot/>} />
+        </Route>
+    </Routes>
+    </Suspense>
+  
+        
+     
   );
 }
 
