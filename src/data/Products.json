@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "title": "Velvet Lip Tint",
+    "code": "BLM-LP-001",
+    "category": "Lips",
+    "brand": "Bloom Beauty",
+    "price": 145000,
+    "stock": 120
+  },
+  {
+    "id": 2,
+    "title": "Glow Cushion",
+    "code": "BLM-FC-002",
+    "category": "Face",
+    "brand": "Bloom Labs",
+    "price": 210000,
+    "stock": 45
+  },
+  {
+    "id": 3,
+    "title": "Ethereal Palette",
+    "code": "BLM-EY-003",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 320000,
+    "stock": 15
+  },
+  {
+    "id": 4,
+    "title": "Rose Dewy Mask",
+    "code": "BLM-SC-004",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 25000,
+    "stock": 200
+  },
+  {
+    "id": 5,
+    "title": "Cloud Blush",
+    "code": "BLM-FC-005",
+    "category": "Face",
+    "brand": "Bloom Beauty",
+    "price": 115000,
+    "stock": 88
+  },
+  {
+    "id": 6,
+    "title": "Silk Eyeliner",
+    "code": "BLM-EY-006",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 85000,
+    "stock": 0
+  },
+  {
+    "id": 7,
+    "title": "Matte Lip Cream",
+    "code": "BLM-LP-007",
+    "category": "Lips",
+    "brand": "Bloom Beauty",
+    "price": 130000,
+    "stock": 95
+  },
+  {
+    "id": 8,
+    "title": "Hydrating Serum",
+    "code": "BLM-SC-008",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 185000,
+    "stock": 60
+  },
+  {
+    "id": 9,
+    "title": "Luminous Foundation",
+    "code": "BLM-FC-009",
+    "category": "Face",
+    "brand": "Bloom Labs",
+    "price": 245000,
+    "stock": 40
+  },
+  {
+    "id": 10,
+    "title": "Volume Mascara",
+    "code": "BLM-EY-010",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 110000,
+    "stock": 75
+  },
+  {
+    "id": 11,
+    "title": "Glow Lip Oil",
+    "code": "BLM-LP-011",
+    "category": "Lips",
+    "brand": "Bloom Beauty",
+    "price": 125000,
+    "stock": 110
+  },
+  {
+    "id": 12,
+    "title": "Translucent Powder",
+    "code": "BLM-FC-012",
+    "category": "Face",
+    "brand": "Bloom Labs",
+    "price": 135000,
+    "stock": 50
+  },
+  {
+    "id": 13,
+    "title": "Brow Definer Gel",
+    "code": "BLM-EY-013",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 95000,
+    "stock": 130
+  },
+  {
+    "id": 14,
+    "title": "Ceramide Moisturizer",
+    "code": "BLM-SC-014",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 195000,
+    "stock": 35
+  },
+  {
+    "id": 15,
+    "title": "Satin Highligther",
+    "code": "BLM-FC-015",
+    "category": "Face",
+    "brand": "Bloom Beauty",
+    "price": 160000,
+    "stock": 25
+  },
+  {
+    "id": 16,
+    "title": "Glitter Liquid Eyeshadow",
+    "code": "BLM-EY-016",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 120000,
+    "stock": 0
+  },
+  {
+    "id": 17,
+    "title": "Lip Liner Definer",
+    "code": "BLM-LP-017",
+    "category": "Lips",
+    "brand": "Bloom Beauty",
+    "price": 75000,
+    "stock": 80
+  },
+  {
+    "id": 18,
+    "title": "Centella Cleansing Gel",
+    "code": "BLM-SC-018",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 115000,
+    "stock": 150
+  },
+  {
+    "id": 19,
+    "title": "Sunscreen SPF 50",
+    "code": "BLM-SC-019",
+    "category": "Skincare",
+    "brand": "Bloom Labs",
+    "price": 140000,
+    "stock": 90
+  },
+  {
+    "id": 20,
+    "title": "Creamy Concealer",
+    "code": "BLM-FC-020",
+    "category": "Face",
+    "brand": "Bloom Labs",
+    "price": 125000,
+    "stock": 65
+  },
+  {
+    "id": 21,
+    "title": "Plumping Lip Gloss",
+    "code": "BLM-LP-021",
+    "category": "Lips",
+    "brand": "Bloom Beauty",
+    "price": 135000,
+    "stock": 70
+  },
+  {
+    "id": 22,
+    "title": "Exfoliating Toner",
+    "code": "BLM-SC-022",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 165000,
+    "stock": 42
+  },
+  {
+    "id": 23,
+    "title": "Contour Sculpt Stick",
+    "code": "BLM-FC-023",
+    "category": "Face",
+    "brand": "Bloom Studio",
+    "price": 150000,
+    "stock": 55
+  },
+  {
+    "id": 24,
+    "title": "Waterproof Gel Eyeliner",
+    "code": "BLM-EY-024",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 105000,
+    "stock": 115
+  },
+  {
+    "id": 25,
+    "title": "Bakuchiol Night Cream",
+    "code": "BLM-SC-025",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 220000,
+    "stock": 28
+  },
+  {
+    "id": 26,
+    "title": "Setting Spray Matte",
+    "code": "BLM-FC-026",
+    "category": "Face",
+    "brand": "Bloom Labs",
+    "price": 175000,
+    "stock": 80
+  },
+  {
+    "id": 27,
+    "title": "Tinted Lip Balm",
+    "code": "BLM-LP-027",
+    "category": "Lips",
+    "brand": "Bloom Beauty",
+    "price": 90000,
+    "stock": 140
+  },
+  {
+    "id": 28,
+    "title": "Vitamin C Glow Serum",
+    "code": "BLM-SC-028",
+    "category": "Skincare",
+    "brand": "Bloom Labs",
+    "price": 190000,
+    "stock": 33
+  },
+  {
+    "id": 29,
+    "title": "Eyeshadow Base Primer",
+    "code": "BLM-EY-029",
+    "category": "Eyes",
+    "brand": "Bloom Studio",
+    "price": 88000,
+    "stock": 50
+  },
+  {
+    "id": 30,
+    "title": "Micellar Water Gentle",
+    "code": "BLM-SC-030",
+    "category": "Skincare",
+    "brand": "Bloom Skin",
+    "price": 80000,
+    "stock": 105
+  }
+]

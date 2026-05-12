@@ -48,4 +48,3 @@ export default function Order () {
   );
 };
 
-export default Order;

@@ -6,14 +6,14 @@ import Loading from './components/Loading'
 // Ganti import statis menjadi lazy loading
 const Dashboard = React.lazy(() => import('./pages/Dashboard'))
 const Order = React.lazy(() => import('./pages/Order'))
+const Product = React.lazy(() => import('./pages/Products'))
 const Customer = React.lazy(() => import('./pages/Customer'))
 const NotFound = React.lazy(() => import('./pages/NotFound'))
 const Login = React.lazy(() => import('./pages/auth/Login'))
 const Register = React.lazy(() => import('./pages/auth/Register'))
 const Forgot = React.lazy(() => import('./pages/auth/Forgot'))
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage'))
-
-// MainLayout & AuthLayout biasanya dibiarkan statis karena sering langsung dipakai
+const ProductDetail = React.lazy(() => import('./pages/ProductDetail'))
 const MainLayouts = React.lazy(() => import('./layouts/MainLayouts'))
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'))
 
@@ -28,8 +28,10 @@ function App() {
           <Routes>
             <Route element={<MainLayouts />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/customer" element={<Customer />} />
+            <Route path="/orders" element={<Order />} />
+            <Route path="/customers" element={<Customer />} />
+            <Route path="/products" element={<Product />} />
+            <Route path="/products/:id" element={<ProductDetail />} /> 
 
             {/* Route khusus Error Pages sesuai perintah */}
             <Route 
@@ -65,7 +67,7 @@ function App() {
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />
             </Route>
-
+            
             <Route element={<AuthLayout/>}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register/>} />

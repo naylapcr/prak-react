@@ -44,6 +44,11 @@ export default function Sidebar() {
                         <AiFillCustomerService />
                         <span> Customers</span>
                     </NavLink>
+                    <NavLink id="menu-3" to="/products" 
+                    className={menuClass}>
+                        <AiFillCustomerService />
+                        <span> Products</span>
+                    </NavLink>
                     {/* --- Tambahkan kode ini di bawah menu Orders --- */}
 <div className="mt-8 border-t pt-4">
   <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
