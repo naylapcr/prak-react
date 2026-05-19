@@ -16,6 +16,7 @@ const ErrorPage = React.lazy(() => import('./pages/ErrorPage'))
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail'))
 const MainLayouts = React.lazy(() => import('./layouts/MainLayouts'))
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'))
+const Components = React.lazy(() => import("./pages/Components"))
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/customers" element={<Customer />} />
             <Route path="/products" element={<Product />} />
             <Route path="/products/:id" element={<ProductDetail />} /> 
+            <Route path="/components" element={<Components />} />
 
             {/* Route khusus Error Pages sesuai perintah */}
             <Route 

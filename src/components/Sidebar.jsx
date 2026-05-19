@@ -1,19 +1,18 @@
-import { MdDashboard } from "react-icons/md";
-import { FaPlus } from "react-icons/fa";
+import { MdDashboard, MdShoppingCart, MdPeople, MdAnalytics, MdAdd, MdErrorOutline, MdInventory } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
-import { AiFillCustomerService } from "react-icons/ai";
-import { CiShoppingCart } from "react-icons/ci";
+
 
 export default function Sidebar() {
         const menuClass = ({ isActive }) =>
         `flex cursor-pointer items-center rounded-xl p-4  space-x-2
-
         ${isActive ? 
-            "text-hijau bg-blue-200 font-extrabold" : 
-            "text-gray-600 hover:text-hijau hover:bg-blue-200 hover:font-extrabold"
+            "text-hijau bg-green-200 font-extrabold" : 
+            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
         }`
+    
     return (
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
+            
             {/* Logo */}
             <div id="sidebar-logo" className="flex flex-col">
                 <span id="logo-title" className="font-poppins text-[48px] text-gray-900">
@@ -23,73 +22,86 @@ export default function Sidebar() {
             </div>
 
             {/* List Menu */}
-            <div id="sidebar-menu" className="mt-10">
-                <ul id="menu-list" className="space-y-3">
-                    <NavLink 
-                    id="menu-1" 
-                    to="/" 
-                    className={menuClass}>
-                        <MdDashboard className="mr-4 text-xl" />
-                        <span> Dashboard</span>
-                    </NavLink>
-                    <NavLink 
-                    id="menu-2" 
-                    to="/orders" 
-                    className={menuClass}>
-                        <CiShoppingCart />
-                        <span> Orders</span>
-                    </NavLink>
-                    <NavLink id="menu-3" to="/customers" 
-                    className={menuClass}>
-                        <AiFillCustomerService />
-                        <span> Customers</span>
-                    </NavLink>
-                    <NavLink id="menu-3" to="/products" 
-                    className={menuClass}>
-                        <AiFillCustomerService />
-                        <span> Products</span>
-                    </NavLink>
-                    {/* --- Tambahkan kode ini di bawah menu Orders --- */}
-<div className="mt-8 border-t pt-4">
-  <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
-    Error Pages
-  </p>
-  
-  <ul className="space-y-2">
-    <li>
-      <Link to="/error/400" className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md transition">
-        <span className="mr-3 text-lg">⚠️</span>
-        <span>Error 400</span>
-      </Link>
-    </li>
-    <li>
-      <Link to="/error/401" className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md transition">
-        <span className="mr-3 text-lg">👤</span>
-        <span>Error 401</span>
-      </Link>
-    </li>
-    <li>
-      <Link to="/error/403" className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md transition">
-        <span className="mr-3 text-lg">🔒</span>
-        <span>Error 403</span>
-      </Link>
-    </li>
-  </ul>
-</div>
+            <ul id="menu-list" className="space-y-3">
+                    {/* Menu yang sudah ada */}
+                    <li>
+                        <NavLink to="/" className={menuClass}>
+                            <MdDashboard className="mr-4 text-xl" />
+                            <span>Dashboard</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/orders" className={menuClass}>
+                            <MdShoppingCart className="mr-4 text-xl" />
+                            <span>Orders</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/customers" className={menuClass}>
+                            <MdPeople className="mr-4 text-xl" />
+                            <span>Customers</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/products" className={menuClass}>
+                            <MdInventory className="mr-4 text-xl" />
+                            <span>Products</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/components" className={menuClass}>
+                            <MdInventory className="mr-4 text-xl" />
+                            <span>Components</span>
+                        </NavLink>
+                    </li>
+
+
+                    {/* PEMBATAS (Opsional agar rapi) */}
+                    <div className="pt-4 pb-2">
+                        <p className="text-xs font-bold text-gray-400 uppercase">Error Pages</p>
+                    </div>
+
+                    {/* MENU ERROR BARU */}
+                    <li>
+                        <NavLink to="/error-400" className={menuClass}>
+                            <MdErrorOutline className="mr-4 text-xl" />
+                            <span>Error 400</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/error-401" className={menuClass}>
+                            <MdErrorOutline className="mr-4 text-xl" />
+                            <span>Error 401</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/error-403" className={menuClass}>
+                            <MdErrorOutline className="mr-4 text-xl" />
+                            <span>Error 403</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/error-404" className={menuClass}>
+                            <MdErrorOutline className="mr-4 text-xl" />
+                            <span>Error 404</span>
+                        </NavLink>
+                    </li>
                 </ul>
-            </div>
 
             {/* Footer */}
             <div id="sidebar-footer" className="mt-auto">
                 <div id="footer-card" className="bg-hijau px-4 py-2 rounded-md shadow-lg mb-10 flex items-center">
                     <div id="footer-text" className="text-white text-sm">
                         <span>Please organize your menus through button below!</span>
+                        
                         <div id="add-menu-button" className="flex justify-center items-center p-2 mt-3 bg-white rounded-md space-x-2">
-                            <FaPlus className="mr-4 text-xl" />
-                            <span className="text-gray-600 flex items-center">Add Menus</span>
+                            <span className="text-gray-600 flex items-center">
+                                <MdAdd className="mr-4 text-xl" />
+                                Add Menus
+                            </span>
                         </div>
                     </div>
-                    <img id="footer-avatar" className="w-20 rounded-full" src="https://images.pexels.com/photos/18253842/pexels-photo-18253842.jpeg" />
+                    <img id="footer-avatar" className="w-20 rounded-full" src="https://avatar.iran.liara.run/public/28" alt="Avatar" />
                 </div>
                 <span id="footer-brand" className="font-bold text-gray-400">Sedap Restaurant Admin Dashboard</span>
                 <p id="footer-copyright" className="font-light text-gray-400">&copy; 2025 All Right Reserved</p>
