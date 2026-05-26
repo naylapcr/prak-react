@@ -55,7 +55,7 @@ export default function Sidebar() {
                         </NavLink>
                     </li>
                     <li>
-                    <NavLink to="/orders" className={menuClass}>
+                    <NavLink to="/fitur-xyz" className={menuClass}>
                             <MdShoppingCart className="mr-4 text-xl" />
                             <span>Fitur-xyz</span>
                         </NavLink>

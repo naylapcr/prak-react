@@ -17,6 +17,7 @@ const ProductDetail = React.lazy(() => import('./pages/ProductDetail'))
 const MainLayouts = React.lazy(() => import('./layouts/MainLayouts'))
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'))
 const Components = React.lazy(() => import("./pages/Components"))
+const FiturXyz = React.lazy(() => import("./pages/FiturXyz"))
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/products" element={<Product />} />
             <Route path="/products/:id" element={<ProductDetail />} /> 
             <Route path="/components" element={<Components />} />
+            <Route path="/fitur-xyz" element={<FiturXyz />} />
 
             {/* Route khusus Error Pages sesuai perintah */}
             <Route 
