@@ -54,6 +54,13 @@ export default function Sidebar() {
                             <span>Components</span>
                         </NavLink>
                     </li>
+                    <li>
+                    <NavLink to="/orders" className={menuClass}>
+                            <MdShoppingCart className="mr-4 text-xl" />
+                            <span>Fitur-xyz</span>
+                        </NavLink>
+                    </li>
+                
 
 
                     {/* PEMBATAS (Opsional agar rapi) */}
