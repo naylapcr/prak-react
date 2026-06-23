@@ -1,7 +1,10 @@
 import React, { useState, lazy, Suspense } from 'react' // Tambahkan lazy & Suspense
 import "./assets/tailwind.css"
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Loading from './components/Loading'
+import ProtectedRoute from './components/ProtectedRoute'
+import GuestRoute from './components/GuestRoute'
+import { useAuth } from './contexts/AuthContext'
 
 // Ganti import statis menjadi lazy loading
 const Dashboard = React.lazy(() => import('./pages/Dashboard'))
@@ -11,14 +14,23 @@ const Customer = React.lazy(() => import('./pages/Customer'))
 const NotFound = React.lazy(() => import('./pages/NotFound'))
 const Login = React.lazy(() => import('./pages/auth/Login'))
 const Register = React.lazy(() => import('./pages/auth/Register'))
-const Forgot = React.lazy(() => import('./pages/auth/Forgot'))
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage'))
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail'))
 const MainLayouts = React.lazy(() => import('./layouts/MainLayouts'))
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'))
 const Components = React.lazy(() => import("./pages/Components"))
 const FiturXyz = React.lazy(() => import("./pages/FiturXyz"))
+const Notes = React.lazy(() => import("./pages/Notes"))
+const MemberDashboard = React.lazy(() => import("./pages/member/MemberDashboard"))
 
+function HomeRedirect() {
+  const { loading, profile } = useAuth()
+
+  if (loading) return <Loading />
+  if (!profile) return <Navigate to="/login" replace />
+
+  return <Navigate to={profile.role === "admin" ? "/admin/dashboard" : "/member/dashboard"} replace />
+}
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,15 +40,34 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
           <Routes>
+            <Route path="/" element={<HomeRedirect />} />
+
+            <Route element={<ProtectedRoute role="admin" />}>
             <Route element={<MainLayouts />}>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/orders" element={<Order />} />
+            <Route path="/admin/customers" element={<Customer />} />
+            <Route path="/admin/products" element={<Product />} />
+            <Route path="/admin/products/:id" element={<ProductDetail />} />
+            </Route>
+            </Route>
+
+            <Route element={<ProtectedRoute role="member" />}>
+            <Route element={<MainLayouts />}>
+            <Route path="/member/dashboard" element={<MemberDashboard />} />
+            </Route>
+            </Route>
+
+            <Route element={<ProtectedRoute role="admin" />}>
+            <Route element={<MainLayouts />}>
             <Route path="/orders" element={<Order />} />
             <Route path="/customers" element={<Customer />} />
             <Route path="/products" element={<Product />} />
             <Route path="/products/:id" element={<ProductDetail />} /> 
             <Route path="/components" element={<Components />} />
             <Route path="/fitur-xyz" element={<FiturXyz />} />
-
+            <Route path="/notes" element={<Notes />} />
+            
             {/* Route khusus Error Pages sesuai perintah */}
             <Route 
               path="/error/400" 
@@ -71,11 +102,14 @@ function App() {
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />
             </Route>
+            </Route>
             
+            <Route element={<GuestRoute />}>
             <Route element={<AuthLayout/>}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/forgot" element={<Forgot/>} />
+            <Route path="/forgot" element={<Navigate to="/login" replace />} />
+            </Route>
         </Route>
     </Routes>
     </Suspense>

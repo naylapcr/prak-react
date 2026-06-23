@@ -1,8 +1,11 @@
-import { MdDashboard, MdShoppingCart, MdPeople, MdAnalytics, MdAdd, MdErrorOutline, MdInventory } from "react-icons/md";
+import { MdDashboard, MdShoppingCart, MdPeople, MdAdd, MdErrorOutline, MdInventory, MdLogout } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import { supabase } from "../services/supabaseClient";
+import { useAuth } from "../contexts/AuthContext";
 
 
 export default function Sidebar() {
+        const { profile } = useAuth()
         const menuClass = ({ isActive }) =>
         `flex cursor-pointer items-center rounded-xl p-4  space-x-2
         ${isActive ? 
@@ -23,27 +26,36 @@ export default function Sidebar() {
 
             {/* List Menu */}
             <ul id="menu-list" className="space-y-3">
+                    {profile?.role === "member" ? (
+                    <li>
+                        <NavLink to="/member/dashboard" className={menuClass}>
+                            <MdDashboard className="mr-4 text-xl" />
+                            <span>Member Dashboard</span>
+                        </NavLink>
+                    </li>
+                    ) : (
+                    <>
                     {/* Menu yang sudah ada */}
                     <li>
-                        <NavLink to="/" className={menuClass}>
+                        <NavLink to="/admin/dashboard" className={menuClass}>
                             <MdDashboard className="mr-4 text-xl" />
                             <span>Dashboard</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/orders" className={menuClass}>
+                        <NavLink to="/admin/orders" className={menuClass}>
                             <MdShoppingCart className="mr-4 text-xl" />
                             <span>Orders</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/customers" className={menuClass}>
+                        <NavLink to="/admin/customers" className={menuClass}>
                             <MdPeople className="mr-4 text-xl" />
                             <span>Customers</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/products" className={menuClass}>
+                        <NavLink to="/admin/products" className={menuClass}>
                             <MdInventory className="mr-4 text-xl" />
                             <span>Products</span>
                         </NavLink>
@@ -60,6 +72,12 @@ export default function Sidebar() {
                             <span>Fitur-xyz</span>
                         </NavLink>
                     </li>
+                    <li>
+                    <NavLink to="/notes" className={menuClass}>
+                            <MdShoppingCart className="mr-4 text-xl" />
+                            <span>Notes</span>
+                        </NavLink>
+                    </li>
                 
 
 
@@ -70,29 +88,31 @@ export default function Sidebar() {
 
                     {/* MENU ERROR BARU */}
                     <li>
-                        <NavLink to="/error-400" className={menuClass}>
+                        <NavLink to="/error/400" className={menuClass}>
                             <MdErrorOutline className="mr-4 text-xl" />
                             <span>Error 400</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/error-401" className={menuClass}>
+                        <NavLink to="/error/401" className={menuClass}>
                             <MdErrorOutline className="mr-4 text-xl" />
                             <span>Error 401</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/error-403" className={menuClass}>
+                        <NavLink to="/error/403" className={menuClass}>
                             <MdErrorOutline className="mr-4 text-xl" />
                             <span>Error 403</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/error-404" className={menuClass}>
+                        <NavLink to="/not-found" className={menuClass}>
                             <MdErrorOutline className="mr-4 text-xl" />
                             <span>Error 404</span>
                         </NavLink>
                     </li>
+                    </>
+                    )}
                 </ul>
 
             {/* Footer */}
@@ -112,6 +132,13 @@ export default function Sidebar() {
                 </div>
                 <span id="footer-brand" className="font-bold text-gray-400">Sedap Restaurant Admin Dashboard</span>
                 <p id="footer-copyright" className="font-light text-gray-400">&copy; 2025 All Right Reserved</p>
+                <button
+                    onClick={() => supabase.auth.signOut()}
+                    className="mt-4 flex items-center text-sm font-semibold text-gray-500 hover:text-hijau"
+                >
+                    <MdLogout className="mr-2 text-lg" />
+                    Logout
+                </button>
             </div>
         </div>
     );

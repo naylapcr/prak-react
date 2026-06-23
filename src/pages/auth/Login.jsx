@@ -1,12 +1,14 @@
-import axios from "axios"
 import { useState } from "react"
 import { BsFillExclamationDiamondFill } from "react-icons/bs"
 import { ImSpinner2 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
+import { supabase } from "../../services/supabaseClient"
+import { useAuth } from "../../contexts/AuthContext"
 
 export default function Login() {
     //navigate
     const navigate = useNavigate()
+    const { refreshProfile } = useAuth()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
     const [dataForm, setDataForm] = useState({
@@ -28,31 +30,32 @@ export default function Login() {
         setLoading(true)
         setError(false)
 
-        axios
-            .post("https://dummyjson.com/user/login", {
-                username: dataForm.email,
-                password: dataForm.password,
-            })
-            .then((response) => {
-                // Jika status bukan 200, tampilkan pesan error
-                if (response.status !== 200) {
-                    setError(response.data.message);
-                    return;
-                }
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: dataForm.email,
+            password: dataForm.password,
+        })
 
-                // Redirect ke dashboard jika login sukses
-                navigate("/");
-            })
-            .catch((err) => {
-                if (err.response) {
-                    setError(err.response.data.message || "An error occurred");
-                } else {
-                    setError(err.message || "An unknown error occurred");
-                }
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        if (error) {
+            setError(error.message)
+            setLoading(false)
+            return
+        }
+
+        const { data: profile, error: profileError } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", data.user.id)
+            .single()
+
+        if (profileError) {
+            setError(profileError.message)
+            setLoading(false)
+            return
+        }
+
+        await refreshProfile(data.user.id)
+        navigate(profile.role === "admin" ? "/admin/dashboard" : "/member/dashboard")
+        setLoading(false)
 
     }
 
